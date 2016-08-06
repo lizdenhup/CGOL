@@ -1,16 +1,27 @@
+require 'pry'
+
 class Board
 
   def initialize
-    @board = Array.new(10) {Array.new(10,0)}
+    @board = Array.new(3) {Array.new(3,0)}
+    @board[0][0] = 1
+    @board[1][1] = 1
+    @board[2][2] = 1
+    @board 
   end
 
   def living_cells
-    living_cells = []
-    @board.each do |row| 
-      row.each_index.select { |index| row[index] == 1 }
-    end
-    living_cells 
-  end
+    # currently debugging 
+    @living_cells = []
+    @board.each_with_index do |row, row_index|
+      if row.include?(1)
+        row.each_index.select { |column_index| row[column_index] == 1
+        @living_cells << [row_index, column_index] }
+      end 
+      binding.pry 
+      @living_cells 
+    end 
+  end 
 
   def neighborhood
 #    neighborhood = 
@@ -31,3 +42,4 @@ class Board
 
 end 
 
+Board.new.living_cells
