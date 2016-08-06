@@ -4,13 +4,13 @@ class Board
     @board = Array.new(10) {Array.new(10,0)}
   end
 
-  def living_cells(x,y)
-
+  def living_cells
+    living_cells = []
+    @board.each do |row| 
+      row.each_index.select { |index| row[index] == 1 }
+    end
+    living_cells 
   end
-
-  def cell_is_alive?
-
-  end 
 
   def neighborhood
 #    neighborhood = 
