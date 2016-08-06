@@ -5,22 +5,21 @@ class Board
   def initialize
     @board = Array.new(3) {Array.new(3,0)}
     @board[0][0] = 1
-    @board[1][1] = 1
-    @board[2][2] = 1
+    @board[1][0] = 1
+    @board[2][1] = 1
     @board 
   end
 
   def living_cells
-    # currently debugging 
     @living_cells = []
     @board.each_with_index do |row, row_index|
       if row.include?(1)
-        row.each_index.select { |column_index| row[column_index] == 1
-        @living_cells << [row_index, column_index] }
+        row.each_index.select { |column_index| row[column_index] == 1 }.each do |non_zero_column_index|
+          @living_cells << [row_index, non_zero_column_index]
+        end  
       end 
-      binding.pry 
-      @living_cells 
     end 
+      @living_cells 
   end 
 
   def neighborhood
@@ -42,4 +41,6 @@ class Board
 
 end 
 
-Board.new.living_cells
+test = Board.new.living_cells
+binding.pry 
+
