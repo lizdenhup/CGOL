@@ -3,11 +3,7 @@ require 'pry'
 class Board
 
   def initialize
-    @board = Array.new(3) {Array.new(3,0)}
-    @board[0][0] = 1
-    @board[1][0] = 1
-    @board[2][1] = 1
-    @board 
+    @board = Array.new(10) {Array.new(10,0)}
   end
 
   def living_cells
@@ -22,8 +18,12 @@ class Board
       @living_cells 
   end 
 
-  def neighborhood
-#    neighborhood = 
+  def neighborhood(cell)
+    # cell is an array containing the x,y indices of position of interest
+    neighborhood = []
+    
+
+    end 
   end 
 
 
