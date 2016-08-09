@@ -4,6 +4,8 @@ class Board
 
   def initialize
     @board = Array.new(10) {Array.new(10,0)}
+    @width = @board[0].length
+    @height = @board[0][0].length
   end
 
   def living_cells
@@ -18,12 +20,16 @@ class Board
       @living_cells 
   end 
 
-  def neighborhood(cell)
-    # cell is an array containing the x,y indices of position of interest
+  def neighborhood(x,y)
     neighborhood = []
-    
-
-    end 
+    neighborhood << [(x + 1) % @width, (y + 1) % @height]
+    neighborhood << [(x + 1) % @width, (y - 1) % @height]
+    neighborhood << [(x - 1) % @width, (y - 1) % @height]
+    neighborhood << [(x - 1) % @width, (y + 1) % @height]
+    neighborhood << [x, (y + 1) % @height]
+    neighborhood << [x, (y - 1) % @height]
+    neighborhood << [(x + 1) % @width, y]
+    neighborhood << [(x - 1) % @width, y]
   end 
 
 
